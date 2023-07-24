@@ -13,7 +13,7 @@ Essa técnica transforma vídeos, principalmente aqueles capturados por câmeras
 ### VideoIO.jl
 Biblioteca da Julia utlizada para separar o vídeo em quadros e, após concluídas as outras etapas, reconstituir os quadros resultantes novamente em um vídeo.
 
-### Mínimos Quadrados Alternados [1.](https://en.wikipedia.org/wiki/Matrix_completion)
+### Mínimos Quadrados Alternados [(1)](https://en.wikipedia.org/wiki/Matrix_completion)
 Técnica utilizada para se obter uma fatoração de matriz aproximada.
 $$A_{m \times n} \approx B_{m \times t}C_{t \times n}$$
 Inicialmente escolhemos um valor para $C$ e então calculamos o $B$ que melhor aproxima a equação acima utilzando mínimos quadrados.
@@ -22,7 +22,7 @@ Agora podemos esquecer o valor de $C$ previamente escolhido e novamente resolver
 
 Repetindo esse processo inúmeras vezes, melhoramos nossa aproximação, até encontrarmos a fatoração mais próxima possível.
 
-Podemos diminuir o valor de $t$ para obtermos aproximações de posto menores. Isso é devido ao fato de essa aproximação também ordenar as informações em relação a quanto elas contribuem para a imagem original. [2.](https://timbaumann.info/svd-image-compression-demo/)
+Podemos diminuir o valor de $t$ para obtermos aproximações de posto menores. Isso é devido ao fato de essa aproximação também ordenar as informações em relação a quanto elas contribuem para a imagem original. [(2)](https://timbaumann.info/svd-image-compression-demo/)
 
 No nosso caso, as informações que mais contribuem para nossa imagem original são as que compõe o plano de fundo, pois são, por definição, as mais prevalentes ao longo do vídeo, e obtê-lo é um objetivo intermediário desse projeto.
 
@@ -71,4 +71,5 @@ Uma alternativa viável para melhorar o desempenho é obter o plano de fundo do 
 
 ## Referências
 [1. https://en.wikipedia.org/wiki/Matrix_completion](https://en.wikipedia.org/wiki/Matrix_completion) (Acessado em 23/07/2023, Sub-seção : "Alternating Least Squares")
+
 [2. https://timbaumann.info/svd-image-compression-demo/](https://timbaumann.info/svd-image-compression-demo/) (Acessado em 23/07/2023, Sub-seção : "Using SVD for image compression")
