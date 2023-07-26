@@ -3,6 +3,8 @@ using LinearAlgebra
 using Statistics
 using ProgressBars
 
+# Função que retorna uma aproximação de um certo posto da matriz fornecida utilizando
+# mínimos quadrados alternados.
 function compress(temporal_frames::Array{RGB{N0f8}}, factor::Int)
     
     m, n = size(temporal_frames)
@@ -28,8 +30,8 @@ function compress(temporal_frames::Array{RGB{N0f8}}, factor::Int)
             temp = B * C
         end
         
+        # Caso os valores fujam do intervalo [0, 1], utilizado por N0f8.
         push!(svd_array, clamp.(temp, 0.0, 1.0))
-        #push!(svd_array, clamp.(svds(channel), 0.0, 1.0))
             
     end
 
@@ -46,6 +48,12 @@ end
 directory = "./temporal_frames"
 m, n = size(load("./original_frames/frame_0000.png"))
 
+# Aplica a aproximação acima em cada um dos frames temporais.
+# Então, tira a média de todos os valores da mesma linha, produzindo
+# uma única coluna.
+# Cada uma dessas colunas é concatenada em uma única matriz,
+# que representa uma aproximação de posto baixo do vídeo inteiro,
+# ou seja, o plano de fundo do vídeo, que é, então, salvo.
 for (root, dirs, files) in walkdir(directory)
     println("Aplicando o svd em cada coluna...")
     svd_vector = [mean(compress(load(joinpath(root, file)), 10), dims = 2) for file in ProgressBar(files)]

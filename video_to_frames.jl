@@ -2,11 +2,15 @@ using VideoIO
 using Images
 using ProgressBars
 
+# Cria um diretório. Caso já exista um com o mesmo nome, remove-o.
 function create_dir(directory)
     rm(directory, force=true, recursive=true)
     mkdir(directory)
 end
-    
+
+# Separa o vídeo fornecido em frames e nomea cada frame sequencialmente
+# de acordo com o número de frames totais.
+# Exemplo : Vídeo de 48678 frames -> frame_00000, frame_00001, ..., frame_48677.
 function video_to_frames(file_path, directory)
     io = VideoIO.open(file_path)
     f = VideoIO.openvideo(io)

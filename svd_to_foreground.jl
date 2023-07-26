@@ -6,6 +6,8 @@ function create_dir(directory)
     mkdir(directory)
 end
 
+# Subtrai cada frame do vídeo original do plano de fundo obtido,
+# evitando que valores saiam do intervalo [0, 1] do N0f8.
 function get_foreground(image1_path, image2_path)
     file1 = load(image1_path)
     file2 = load(image2_path)
@@ -38,6 +40,11 @@ function get_dir_info(file_directory)
     return root_path, dirs_path, files_path
 end
 
+# Para cada frame do vídeo original, pega a diferença entre eles e o plano de fundo
+# obtido. Verifica cada pixel dessa matriz de diferença. Caso seja acima de um limite,
+# o pixel naquele local será igual ao vídeo original. Caso seja abaixo, o pixel
+# será zerado. Dessa forma, apenas as partes diferentes do plano de fundo serão salvas
+# no vídeo resultante.
 function save_foreground_frames(files, root, save_directory, number_of_frames, treshold)
     local frame
     number_of_digits = length(string(number_of_frames))

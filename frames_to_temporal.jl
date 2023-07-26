@@ -6,6 +6,7 @@ function create_dir(directory)
     mkdir(directory)
 end
 
+# Paraleliza o processo de transformação dos frames.
 function make_temporal_frames(file_directory, save_directory)
     println("Criando a evolução temporal de cada coluna do vídeo...")
     Threads.@threads for i in ProgressBar(1:n)
@@ -13,12 +14,17 @@ function make_temporal_frames(file_directory, save_directory)
     end
 end
 
+# Retorna apenas uma coluna específica de um frame selecionado.
 function get_column(frame_filename, column)
     frame = load(frame_filename)
     temporal_frame_column = frame[:, column]
     return temporal_frame_column
 end
 
+# Para cada pixel de resolução horizontal do vídeo, cria uma matriz
+# onde cada coluna é oriunda da mesma coluna do vídeo original, mas
+# em momentos diferentes, evoluindo temporalmente, da esquerda para
+# a direita. Salvamos então essas matrizes como imagens.
 function save_temporal_frames(i, file_directory, save_directory)
     number_of_digits = length(string(n))
     j = 0

@@ -2,7 +2,8 @@ using VideoIO
 using Images
 using ProgressBars
 
-
+# Junta todos os frames de plano principal obtidos em um
+# vídeo novamente.
 function frames_to_video(filename, directory)
 
     for (root, dirs, files) in walkdir(directory)
