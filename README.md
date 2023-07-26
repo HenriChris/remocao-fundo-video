@@ -2,6 +2,17 @@
 
 ### Autor : Henrique Chrispim
 
+## Utilização
+
+```
+git clone https://github.com/HenriChris/remocao-fundo-video/
+```
+Coloque um vídeo intitulado "video.mp4" dentro da pasta do repositório clonado e rode o comando
+```
+julia main.jl
+```
+Certifique-se de que o terminal utilizado possua permissões de escrita na pasta utilizada.
+
 ## Introdução
 
 A relevância da informação de um vídeo está intimamente ligada à capacidade de identificar e destacar mudanças significativas. Conteúdos estáticos ou repetitivos muitas vezes carecem de interesse ou valor para o usuário ou aplicação. Nesse contexto, a extração do plano de fundo de vídeos pode ser vista como uma solução para esse e outros problemas.
@@ -12,6 +23,9 @@ Essa técnica transforma vídeos, principalmente aqueles capturados por câmeras
 
 ### VideoIO.jl
 Biblioteca da Julia utlizada para separar o vídeo em quadros e, após concluídas as outras etapas, reconstituir os quadros resultantes novamente em um vídeo.
+
+### Images.jl
+Biblioteca da Julia utilizada para manipulação de imagens como matrizes numéricas, com valores no intervalo [0, 1], representando a intensidade do canal de cor específico naquele pixel.
 
 ### Mínimos Quadrados Alternados [(1)](https://en.wikipedia.org/wiki/Matrix_completion)
 Técnica utilizada para se obter uma fatoração de matriz aproximada.
