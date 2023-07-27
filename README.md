@@ -4,6 +4,8 @@
 
 ## Utilização
 
+### Linux
+
 ```
 git clone https://github.com/HenriChris/remocao-fundo-video/
 ```
@@ -11,7 +13,7 @@ Coloque um vídeo intitulado "video.mp4" dentro da pasta do repositório clonado
 ```
 julia main.jl
 ```
-Certifique-se de que o terminal utilizado possua permissões de escrita na pasta utilizada.
+Certifique-se de que o terminal utilizado possui permissões de escrita na pasta do repositório.
 
 ## Introdução
 
@@ -81,7 +83,7 @@ https://github.com/HenriChris/remocao-fundo-video/assets/127856850/c698937d-d7d2
 
 Esse método produz resultados aceitáveis, considerando a quantidade de detalhes presentes no vídeo original. No entanto, sua aplicação prática é prejudicada pela demora no processamento.
 
-Uma alternativa viável para melhorar o desempenho é obter o plano de fundo do vídeo usando apenas uma pequena porcentagem de quadros selecionados aleatoriamente do vídeo original, ao invéz de utilizar todos os quadros.
+Uma alternativa viável para diminuir o tempo de execução é obter o plano de fundo do vídeo usando apenas uma pequena porcentagem de quadros selecionados aleatoriamente do vídeo original, ao invéz de utilizar todos os quadros. Isso também evitaria problemas com objetos que ficam parte do tempo do vídeo estacionários mas acabam movendo se em algum momento, causando um efeito de 'ghosting', como observado nos carros brancos à direita no plano de fundo obtido.
 
 ## Referências
 [1. https://en.wikipedia.org/wiki/Matrix_completion](https://en.wikipedia.org/wiki/Matrix_completion) (Acessado em 23/07/2023, Sub-seção : "Alternating Least Squares")
